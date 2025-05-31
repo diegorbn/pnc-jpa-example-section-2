@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "137d3761-ad3f-456f-9106-002a0904df64",
+		"name": "Demo app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35099828"
+	},
+	"item": [
+		{
+			"name": "Create a vacation request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startDate\": \"2025-08-30\",\n    \"endDate\": \"2025-09-05\",\n    \"reason\": \"Some important reason LMAO\",\n    \"employeeId\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/vacation-requests",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"vacation-requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all vacation requests",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/vacation-requests",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"vacation-requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a vacation request by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/vacation-requests/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"vacation-requests",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a vacation request",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startDate\": \"2025-08-30\",\n    \"endDate\": \"2025-09-05\",\n    \"reason\": \"Some important reason LMAO\",\n    \"EmployeeName\": \"John\",\n    \"status\": \"APPROVED\",\n    \"employeeId\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/vacation-requests/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"vacation-requests",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a vacation request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startDate\": \"2025-05-30\",\n    \"endDate\": \"2025-06-30\",\n    \"reason\": \"Some important reason LMAO\",\n    \"EmployeeName\": \"John\",\n    \"status\": \"APPROVED\",\n    \"employeeId\": 1\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/vacation-requests/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"vacation-requests",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all vacation requests from an employee",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/employee/:id/vacation-requests",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"employee",
+						":id",
+						"vacation-requests"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}

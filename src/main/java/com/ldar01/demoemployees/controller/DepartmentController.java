@@ -56,7 +56,7 @@ public class DepartmentController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<GeneralResponse> deletDepartment(@PathVariable int id) {
+    public ResponseEntity<GeneralResponse> deleteDepartment(@PathVariable int id) {
         DepartmentResponse department = departmentService.findById(id);
         departmentService.delete(id);
         return buildResponse("Department deleted", HttpStatus.OK, department);

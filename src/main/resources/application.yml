@@ -3,11 +3,12 @@ spring:
     name: demoEmployees
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/employees_management
-    username: postgres
-    password: root
+    url:
+    username:
+    password:
+    driver-class-name:
 
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create

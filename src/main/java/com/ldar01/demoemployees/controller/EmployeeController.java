@@ -4,8 +4,10 @@ import com.ldar01.demoemployees.dto.response.GeneralResponse;
 import com.ldar01.demoemployees.dto.request.employee.EmployeeRequest;
 import com.ldar01.demoemployees.dto.request.employee.EmployeeUpdateRequest;
 import com.ldar01.demoemployees.dto.response.employee.EmployeeResponse;
+import com.ldar01.demoemployees.dto.response.vacation.VacationResponse;
 import com.ldar01.demoemployees.exception.EmployeeNotFoundException;
 import com.ldar01.demoemployees.service.EmployeeService;
+import com.ldar01.demoemployees.service.VacationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,15 +18,17 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/employee") //Don´t forget to add this annotation for the controller and redirection
+@RequestMapping("/api/employee") //Don't forget to add this annotation for the controller and redirection
 public class EmployeeController {
     // This is the service that will be used to handle the business logic
     private final EmployeeService employeeService;
+    private final VacationService vacationService;
 
     // Constructor injection is preferred over field injection
     @Autowired
-    public EmployeeController(EmployeeService employeeService) {
+    public EmployeeController(EmployeeService employeeService, VacationService vacationService) {
         this.employeeService = employeeService;
+        this.vacationService = vacationService;
     }
 
     // This is the endpoint that will be used to get all employees
@@ -61,6 +65,12 @@ public class EmployeeController {
         EmployeeResponse employee = employeeService.findById(id);
         employeeService.delete(id);
         return buildResponse("Employee deleted", HttpStatus.OK, employee);
+    }
+
+    @GetMapping("/{id}/vacation-requests")
+    public ResponseEntity<GeneralResponse> getVacationRequestsByEmployeeId(@PathVariable int id) {
+        List<VacationResponse> vacations = vacationService.findAllByEmployeeId(id);
+        return buildResponse("Vacation requests found", HttpStatus.OK, vacations);
     }
 
     public ResponseEntity<GeneralResponse> buildResponse(String message, HttpStatus status, Object data) {
